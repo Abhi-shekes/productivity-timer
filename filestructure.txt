@@ -1,10 +1,14 @@
 |-- .gitignore
+|-- LICENSE
 |-- README.md
-|-- __init__.py
+|-- __pycache__
+    |-- timer.cpython-38.pyc
+|-- productivity_timer
+    |-- __init__.py
+    |-- timer.py
 |-- productivity_timer.egg-info
     |-- PKG-INFO
     |-- SOURCES.txt
     |-- dependency_links.txt
     |-- top_level.txt
 |-- setup.py
-|-- timer.py
