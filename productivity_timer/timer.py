@@ -1,4 +1,5 @@
 import time
+from typing import Dict, Any, Optional, Union
 
 class ProductivityTimer:
     """
@@ -13,11 +14,12 @@ class ProductivityTimer:
             - 'timeout' (float or None): The maximum allowed time in seconds for the timer; None means no timeout.
     """
     
-    def __init__(self):
+    def __init__(self)-> None:
+
         """Initializes the ProductivityTimer with an empty dictionary for timers."""
         self.timers = {}
 
-    def start(self, person, timeout=None):
+    def start(self, person: str, timeout: Optional[float] = None) -> None:
         """
         Starts or restarts a timer for a specified person.
         
@@ -35,7 +37,7 @@ class ProductivityTimer:
         else:
             print(f"Timer for {person} is already running.")
 
-    def resume(self, person):
+    def resume(self, person: str) -> None:
         """
         Resumes a paused timer for the specified person.
         
@@ -51,7 +53,7 @@ class ProductivityTimer:
         else:
             print(f"Timer for {person} is already running.")
 
-    def stop(self, person):
+    def stop(self, person: str) -> None:
         """
         Stops the timer for a specified person, updating their elapsed time.
         
@@ -67,7 +69,7 @@ class ProductivityTimer:
         else:
             print(f"Timer for {person} is already stopped.")
 
-    def reset(self, person):
+    def reset(self, person: str) -> None:
         """
         Resets the timer for a specified person.
         
@@ -80,7 +82,7 @@ class ProductivityTimer:
         else:
             print(f"No timer found for {person} to reset.")
 
-    def pause(self, person):
+    def pause(self, person: str) -> None:
         """
         Pauses the timer for a specified person without resetting their elapsed time.
         
@@ -93,7 +95,7 @@ class ProductivityTimer:
         elif person not in self.timers:
             print(f"No timer found for {person} to pause.")
 
-    def get_elapsed_time(self, person, formatted=False):
+    def get_elapsed_time(self, person: str, formatted: bool = False) -> Union[float, str]:
         """
         Retrieves the elapsed time for a specified person.
         
@@ -113,7 +115,7 @@ class ProductivityTimer:
         print(f"No timer found for {person}.")
         return 0.0
 
-    def get_all_elapsed_times(self, formatted=False):
+    def get_all_elapsed_times(self, formatted: bool = False) -> Dict[str, Union[float, str]]:
         """
         Returns a dictionary with the elapsed times for all tracked persons.
         
@@ -125,20 +127,20 @@ class ProductivityTimer:
         """
         return {person: self.get_elapsed_time(person, formatted) for person in self.timers}
 
-    def stop_all(self):
+    def stop_all(self) -> None:
         """Stops all active timers and updates their elapsed times."""
         for person in self.timers:
             if self.timers[person]['running']:
                 self.stop(person)
         print("All timers stopped.")
 
-    def reset_all(self):
+    def reset_all(self) -> None:
         """Resets all timers to their initial state."""
         for person in self.timers:
             self.reset(person)
         print("All timers reset.")
 
-    def active_timers(self):
+    def active_timers(self) -> list[str]:
         """
         Returns a list of persons with active timers.
         
@@ -147,7 +149,7 @@ class ProductivityTimer:
         """
         return [person for person, timer in self.timers.items() if timer['running']]
 
-    def check_timeouts(self):
+    def check_timeouts(self) -> None:
         """Checks if any timers have exceeded their timeouts and stops them if so."""
         for person, timer in self.timers.items():
             if timer['timeout'] and timer['running']:
@@ -156,7 +158,7 @@ class ProductivityTimer:
                     self.stop(person)
                     print(f"Timer for {person} has reached its timeout of {timer['timeout']} seconds and was stopped.")
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
         Returns a summary of elapsed times for all tracked persons in a readable format.
         

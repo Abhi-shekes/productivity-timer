@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="productivity-timer",
-    version="1.0.1",
+    version="1.0.2",
     packages=find_packages(), 
 
     description="A timer library for managing multiple timers for multiple individuals.",

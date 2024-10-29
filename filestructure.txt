@@ -1,10 +1,9 @@
 |-- .gitignore
 |-- LICENSE
 |-- README.md
-|-- __pycache__
-    |-- timer.cpython-38.pyc
 |-- productivity_timer
     |-- __init__.py
+    |-- py.typed
     |-- timer.py
 |-- productivity_timer.egg-info
     |-- PKG-INFO
