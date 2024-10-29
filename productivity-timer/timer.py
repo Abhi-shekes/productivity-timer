@@ -59,7 +59,6 @@ class ProductivityTimer:
             person (str): The name of the person for whom the timer is stopped.
         """
         if person in self.timers and self.timers[person]['running']:
-            # Calculate elapsed time and update the dictionary
             self.timers[person]['elapsed_time'] += time.time() - self.timers[person]['start_time']
             self.timers[person]['running'] = False
             print(f"Timer stopped for {person}.")
@@ -76,7 +75,6 @@ class ProductivityTimer:
             person (str): The name of the person for whom the timer is reset.
         """
         if person in self.timers:
-            # Reset timer details while retaining the timeout
             self.timers[person] = {'start_time': None, 'elapsed_time': 0, 'running': False, 'timeout': self.timers[person].get('timeout')}
             print(f"Timer reset for {person}.")
         else:
@@ -108,7 +106,6 @@ class ProductivityTimer:
         """
         if person in self.timers:
             timer = self.timers[person]
-            # Calculate total elapsed time
             elapsed = timer['elapsed_time'] + (time.time() - timer['start_time']) if timer['running'] else timer['elapsed_time']
             if formatted:
                 return time.strftime("%H:%M:%S", time.gmtime(elapsed))

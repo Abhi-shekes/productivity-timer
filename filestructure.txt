@@ -1,0 +1,10 @@
+|-- .gitignore
+|-- README.md
+|-- __init__.py
+|-- productivity_timer.egg-info
+    |-- PKG-INFO
+    |-- SOURCES.txt
+    |-- dependency_links.txt
+    |-- top_level.txt
+|-- setup.py
+|-- timer.py
